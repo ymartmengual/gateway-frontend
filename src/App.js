@@ -2,9 +2,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import HeaderComponent from './components/HeaderComponent';
-import { ListGatewaysComponent } from './components/ListGatewaysComponent';
-import ListDevicesComponent from './components/ListDevicesComponent';
-import AddDeviceComponent from './components/AddDeviceComponent';
+import ListDevicesComponent from './components/device/ListDevicesComponent';
+import AddDeviceComponent from './components/device/AddDeviceComponent';
+import AddGatewayComponent from './components/gateways/AddGatewayComponent';
+import ListGatewaysComponent from './components/gateways/ListGatewaysComponent';
+import DetailGatewayComponent from './components/gateways/DetailGatewayComponent';
 
 function App() {
   return (
@@ -13,9 +15,11 @@ function App() {
         <HeaderComponent />
         <div>
         <Routes>
-            <Route exact path='/' element={ <ListGatewaysComponent /> }></Route>
-            <Route exact path='/devices' element={ <ListDevicesComponent /> }></Route>
-            <Route path='/add-device' element={ <AddDeviceComponent /> }></Route>
+            <Route exact path='/gateway' element={ <ListGatewaysComponent /> }></Route>
+            <Route exact path='/device' element={ <ListDevicesComponent /> }></Route>
+            <Route path='/device/add' element={ <AddDeviceComponent /> }></Route>
+            <Route path='/gateway/add' element={ <AddGatewayComponent /> }></Route>
+            <Route path='/gateway/detail/:id' element={ <DetailGatewayComponent /> }></Route>
           </Routes>
         </div>
       </BrowserRouter>

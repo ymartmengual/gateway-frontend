@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import DeviceService from "../services/DeviceService";
+import DeviceService from "../../services/DeviceService";
 import { Link } from "react-router-dom";
 
 
 export const ListDevicesComponent = () => {
 
     const [devices, setDevices] = useState([]);
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         listDevices();
@@ -15,14 +16,17 @@ export const ListDevicesComponent = () => {
         DeviceService.getAllDevices().then(response => {
             setDevices(response.data);
         }).catch(error => {
-            console.log(error);
+            setErrorMessage(error.response.data?.description); 
         });
     }
 
     return (
         <div className='container'>
-            <h2 className='text-center'>Gateways</h2>
-            <Link to='/add-device' className='btn btn-primary mb-2'>Add Device</Link>
+            <h2 className='text-center'>Devices</h2>
+            <span className='text-danger text-small d-block mb-2'>
+                {errorMessage && errorMessage }
+            </span>  
+            <Link to='/device/add' className='btn btn-primary mb-2'>Add Device</Link>
             <table className='table table-bordered table-striped'>
                 <thead>
                     <tr>
@@ -46,8 +50,7 @@ export const ListDevicesComponent = () => {
                             </tr>
                         )
                     }
-                </tbody>
-    
+                </tbody>    
             </table>
         </div>
       )
