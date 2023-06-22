@@ -62,7 +62,7 @@ export const DetailGatewayComponent = () => {
 
   return (
     <div className='container'>           
-        <span className='text-danger text-small d-block mb-2'>
+        <span className='text-success text-small d-block mb-2'>
             {errorMessage && errorMessage }
         </span>
         <div className='row'>
@@ -79,7 +79,14 @@ export const DetailGatewayComponent = () => {
         </div>
         <div className='row'>
             <div className='card col-md-12 form-save-update'>
-                <div className='card-head'>Devices</div>
+                <div className='card-head'>
+                    <h5>Devices list</h5>         
+                    <p>Note: 
+                        <span className='text-success text-small mb-2'>
+                            To Add/Delete a Device to Gateway the user should be on click Add/Delete botton in the device list.
+                        </span>
+                    </p>                
+                </div>
                 <div className='card-body'>
                     <table className='table table-bordered table-striped'>
                         <thead>
