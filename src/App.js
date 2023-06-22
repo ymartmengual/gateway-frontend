@@ -15,6 +15,7 @@ function App() {
         <HeaderComponent />
         <div>
         <Routes>
+            <Route exact path='/' element={ <ListGatewaysComponent /> }></Route>
             <Route exact path='/gateway' element={ <ListGatewaysComponent /> }></Route>
             <Route exact path='/device' element={ <ListDevicesComponent /> }></Route>
             <Route path='/device/add' element={ <AddDeviceComponent /> }></Route>
